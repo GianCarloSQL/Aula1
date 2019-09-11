@@ -11,21 +11,16 @@ namespace ConsoleApp1
     {
         public static void Main(string[] args)
         {
-            
+            /*
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            List<int> lista = ProgramVar.executar(100);
+            List<int> lista = ProgramVar.executar(999999);
             stopwatch.Stop();
             Console.WriteLine($"Tempo passado: {stopwatch.Elapsed}");
-            for (int i=0; i<lista.Count; i++) {
-                Console.WriteLine(lista[i]);
-            }
-
-
             Console.ReadKey();
-            
+            */
 
-           // string[] array = { "gian", "Felipe", "Euclides"};
+            string[] array = { "gian", "Felipe", "Euclides"};
 
 
             /*
