@@ -20,9 +20,21 @@ namespace ConsoleApp1
             Console.ReadKey();
             */
 
-            string[] array = { "gian", "Felipe", "Euclides"};
-
-
+            // string[] array = { "gian", "Felipe", "Euclides"};
+            try
+            {
+                var testeTemplate = @"Nome do usuario:{0} 
+Idade:{1}
+Descricao:{2}";
+                var usuario = string.Format(testeTemplate
+                    , Console.ReadLine()
+                    , Console.ReadLine()
+                    , Console.ReadLine());
+                
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
             /*
            Console.WriteLine("Informe o livro a ser consultado: ");
            var numeroLivro = Console.ReadLine();
