@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,23 @@ namespace ConsoleApp1
         public static void Main(string[] args)
         {
             
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            List<int> lista = ProgramVar.executar(100);
+            stopwatch.Stop();
+            Console.WriteLine($"Tempo passado: {stopwatch.Elapsed}");
+            for (int i=0; i<lista.Count; i++) {
+                Console.WriteLine(lista[i]);
+            }
+
+
+            Console.ReadKey();
+            
+
+           // string[] array = { "gian", "Felipe", "Euclides"};
+
+
+            /*
            Console.WriteLine("Informe o livro a ser consultado: ");
            var numeroLivro = Console.ReadLine();
             if (numeroLivro == "123456")
@@ -25,8 +43,10 @@ namespace ConsoleApp1
                     Console.WriteLine("livro Alocado");
                 }
 
-            }
+            }*/
         }
+
+
 
     }
 }
