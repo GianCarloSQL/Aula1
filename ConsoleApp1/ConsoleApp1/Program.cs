@@ -11,9 +11,15 @@ namespace ConsoleApp1
     {
 
         public static void Main(string[] args)
-        { 
+        {
+
+            FindWord.Executar();
             
-            // Primos
+
+
+
+
+        /*
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             List<int> lista = ProgramVar.executar(999999);
@@ -26,7 +32,7 @@ namespace ConsoleApp1
 
             Console.ReadKey();
           
-            
+            */
 
             /*
 
@@ -67,8 +73,5 @@ Descricao:{2}";
 
             }*/
         }
-
-
-
     }
 }
