@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,27 @@ namespace ConsoleApp1
          Não obstante, o comprometimento entre as equipes maximiza as possibilidades por conta do remanejamento dos quadros funcionais.Evidentemente, a hegemonia do ambiente político aponta para a melhoria do investimento em reciclagem técnica. O cuidado em identificar pontos críticos na adoção de políticas descentralizadoras cumpre um papel essencial na formulação dos paradigmas corporativos. No mundo atual, a estrutura atual da organização deve passar por modificações independentemente das novas proposições.
          Podemos já vislumbrar o modo pelo qual a determinação clara de objetivos afeta positivamente a correta previsão das posturas dos órgãos dirigentes com relação às suas atribuições.Desta maneira, a percepção das dificuldades estende o alcance e a importância do levantamento das variáveis envolvidas. Por conseguinte, o consenso sobre a necessidade de qualificação não pode mais se dissociar do processo de comunicação como um todo.
          Percebemos, cada vez mais, que o julgamento imparcial das eventualidades talvez venha a ressaltar a relatividade das regras de conduta normativas.Por outro lado, a execução dos pontos do programa estimula a padronização das condições financeiras e administrativas exigidas. O empenho em analisar a crescente influência da mídia acarreta um processo de reformulação e modernização dos relacionamentos verticais entre as hierarquias.";
+  
 
+           var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            achaPalavraForTeste(texto);
+            stopwatch.Stop();
+            Console.WriteLine($"Tempo passado For &&: {stopwatch.Elapsed}");
+
+
+             stopwatch = new Stopwatch();
+            stopwatch.Start();
             achaPalavraFor(texto);
-            // achaPalavraWhile(texto);
+            stopwatch.Stop();
+            Console.WriteLine($"Tempo passado For & : {stopwatch.Elapsed}");
+
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            achaPalavraWhile(texto);
+            stopwatch.Stop();
+            Console.WriteLine($"Tempo passado While : {stopwatch.Elapsed}");
+            Console.ReadKey();
 
 
         }
@@ -61,10 +80,38 @@ namespace ConsoleApp1
                 }
             }
             Console.WriteLine(@"Antes:  " + antes + "\nDepois: " + depois);
-            Console.ReadKey();
+
 
         }
         public static void achaPalavraFor(string texto)
+        {
+            int count = 0;
+            for (int i = 0; i < texto.Length - 3; i++)
+            {
+                if (texto[i] == 'q' & texto[i + 1] == 'u' & texto[i + 2] == 'e')
+                {
+                    count++;
+                }
+            }
+            // Console.WriteLine($"Achei: {count} vezes a palavra 'que' ");
+
+        }
+        public static void achaPalavraWhile(string texto)
+        {
+            int i = 0;
+            int count = 0;
+            while (i < texto.Length - 3)
+            {
+                if (texto[i] == 'q' & texto[i + 1] == 'u' & texto[i + 2] == 'e')
+                {
+                    count++;
+                }
+                i++;
+            }
+            // Console.WriteLine($"Achei: {count} vezes a palavra 'que' ");
+
+        }
+        public static void achaPalavraForTeste(string texto)
         {
             int count = 0;
             for (int i = 0; i < texto.Length - 3; i++)
@@ -74,23 +121,8 @@ namespace ConsoleApp1
                     count++;
                 }
             }
-            Console.WriteLine($"Achei: {count} vezes a palavra 'que' ");
-            Console.ReadKey();
-        }
-        public static void achaPalavraWhile(string texto)
-        {
-            int i = 0;
-            int count = 0;
-            while (i < texto.Length - 3)
-            {
-                if (texto[i] == 'q' && texto[i + 1] == 'u' && texto[i + 2] == 'e')
-                {
-                    count++;
-                }
-                i++;
-            }
-            Console.WriteLine($"Achei: {count} vezes a palavra 'que' ");
-            Console.ReadKey();
+            // Console.WriteLine($"Achei: {count} vezes a palavra 'que' ");
+
         }
     }
 }
