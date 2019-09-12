@@ -12,12 +12,7 @@ namespace ConsoleApp1
 
         public static void Main(string[] args)
         {
-
-            FindWord.Executar();
-            
-
-
-
+            FindWord.Executar();     
 
         /*
             var stopwatch = new Stopwatch();

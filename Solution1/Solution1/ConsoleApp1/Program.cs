@@ -26,7 +26,7 @@ namespace ConsoleApp1
         public static void Main(string[] args)
         {
 
-            /*
+            
 
             var stopwatch = new Stopwatch();
              stopwatch.Start();
@@ -48,7 +48,7 @@ namespace ConsoleApp1
              Console.WriteLine($"Tempo passado While : {stopwatch.Elapsed}");
              Console.ReadKey();
 
-     */
+     
 
         }
 
