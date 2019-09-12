@@ -11,14 +11,21 @@ namespace ConsoleApp1
     {
         public static void Main(string[] args)
         {
-            /*
+            
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             List<int> lista = ProgramVar.executar(999999);
             stopwatch.Stop();
             Console.WriteLine($"Tempo passado: {stopwatch.Elapsed}");
+            lista.Sort();
+            for (int i =0; i< lista.Count; i++) {
+                Console.WriteLine(lista[i]);
+            }
+
             Console.ReadKey();
-            */
+            /*
+
+            String Concat
 
             // string[] array = { "gian", "Felipe", "Euclides"};
             try
@@ -35,6 +42,9 @@ Descricao:{2}";
             catch (Exception e) {
                 Console.WriteLine(e);
             }
+            */
+
+
             /*
            Console.WriteLine("Informe o livro a ser consultado: ");
            var numeroLivro = Console.ReadLine();
