@@ -9,9 +9,11 @@ namespace ConsoleApp1
 {
     class Program
     {
+
         public static void Main(string[] args)
-        {
+        { 
             
+            // Primos
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             List<int> lista = ProgramVar.executar(999999);
@@ -23,6 +25,9 @@ namespace ConsoleApp1
             }
 
             Console.ReadKey();
+          
+            
+
             /*
 
             String Concat
