@@ -13,24 +13,21 @@ namespace ConsoleApp1
 
         public static void Main(string[] args)
         {
-            andarBoneco();
-           
-         //   FindWord.Executar();  
+            game();
+            /*
+                var stopwatch = new Stopwatch();
+                stopwatch.Start();
+                List<int> lista = ProgramVar.executar(999999);
+                stopwatch.Stop();
+                Console.WriteLine($"Tempo passado: {stopwatch.Elapsed}");
+                lista.Sort();
+                for (int i =0; i< lista.Count; i++) {
+                    Console.WriteLine(lista[i]);
+                }
 
-        /*
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            List<int> lista = ProgramVar.executar(999999);
-            stopwatch.Stop();
-            Console.WriteLine($"Tempo passado: {stopwatch.Elapsed}");
-            lista.Sort();
-            for (int i =0; i< lista.Count; i++) {
-                Console.WriteLine(lista[i]);
-            }
+                Console.ReadKey();
 
-            Console.ReadKey();
-          
-            */
+                */
 
             /*
 
@@ -72,14 +69,19 @@ Descricao:{2}";
             }*/
         }
 
-        public static void andarBoneco() {
+        public static void cairBoneco() {
             string c = "(+ -)";
             string b = "\n  |";
             string p = "\n / \\ ";
-
+            bool aux = true;
             while (true)
             {
                 Console.Write(c + b + b + p);
+                if (aux) {
+                    Console.ReadKey();
+                    aux = false;
+                }
+               
                 Thread.Sleep(100);
                 Console.Clear();
                 if (true)
@@ -88,10 +90,157 @@ Descricao:{2}";
                     b = "\n" + (b.Substring(1, b.Length - 1));
                     p = "\n" + (p.Substring(1, p.Length - 1));
                 }
+            
                 Thread.Sleep(100);
+              
+            }
+        }
+
+
+        public static void normalBoneco()
+        {
+            string c = "(+ -)";
+            string b = "  |";
+            string mao = " /|\\";
+            string p =  " / \\ ";
+            string p2 = "  \\ \\";
+            bool anda = false;
+            while (true)
+            {
+               
+                if (!anda)
+                {
+
+                    Console.WriteLine(c);
+                    Console.WriteLine(b);
+                    Console.WriteLine(mao);
+                    Console.WriteLine(b);
+                    Console.WriteLine(p);
+                    anda = true;
+                }
+                else {
+                    Console.WriteLine(c);
+                    Console.WriteLine(b);
+                    Console.WriteLine(mao);
+                    Console.WriteLine(b);
+                    Console.WriteLine(p2);
+                    anda = false;
+                }
+                Thread.Sleep(10);
+                Console.Clear();
+
+                c = " " + c;
+                b = " " + b;
+                p = " " + p;
+                mao = " " + mao;
+                p2 = " " + p2;
+                Thread.Sleep(10);
+
+
+            }
+          
+        }
+
+        public static void cairBuracoNegro()
+        {
+            string c = "(+ -)";
+            string b = "\n  |";
+            string p = "\n / \\ ";
+            bool aux = true;
+            int t = 0;
+            while (true)
+            {
+                Console.Write(c + b + b + p);
+                if (aux)
+                {
+                    Console.ReadKey();
+                    aux = false;
+                }
+
+                Thread.Sleep(200);
+                t++;
+                Console.Clear();
+                if (t > 6)
+                {
+                    c = "\n" + c;
+                    b = "\n" + b;
+                    p = "\n" + p;
+                }
+                else {
+                    c = "\n" + c;
+                    b = "\n" + (b.Substring(1, b.Length - 1));
+                    p = "\n" + (p.Substring(1, p.Length - 1));
+                }
+                
+                Thread.Sleep(200);
 
             }
         }
+
+        public static void game() {
+            
+            Thread t = new Thread(run);
+            
+            Thread t2 = new Thread(run2);
+            t.Start();
+            t2.Start();
+
+            while (true) {
+                Console.WriteLine(p1);
+                Console.WriteLine(p2);
+                Thread.Sleep(50);
+
+                Console.Clear();
+                Thread.Sleep(50);
+                if (p1.Length == 40) {
+                    Console.Clear();
+                    p2 = null;
+                    Console.WriteLine("Player 1 wins");
+
+                    break;
+                }else
+                if (p2.Length == 40) {
+                    Console.Clear();
+                    p1 = null;
+                    Console.WriteLine("Player 2 wins");
+                  
+                    break;
+                }
+
+            }
+            t = null;
+
+            Thread.Sleep(100000);
+
+        }
+        static void run() {
+            while (true)
+            {
+                string  v = Console.ReadKey().KeyChar.ToString();
+                if (v == "d") {
+                    p1 = " " + p1;
+
+                } else if (v=="6") {
+                    p1 = "          P1";
+                }
+            }
+        }
+
+        static void run2()
+        {
+            while (true)
+            {
+                string v = Console.ReadKey().KeyChar.ToString();
+                if (v == "5")
+                {
+                    p2 = " " + p2;
+
+                }
+                
+            }
+        }
+        static string p1 = "P1";
+        static  string p2 = "P2";
 
     }
 }
