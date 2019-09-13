@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aula04.cs" />
     <Compile Include="FindWord.cs" />
     <Compile Include="ProgramVar.cs" />
     <Compile Include="Program.cs" />

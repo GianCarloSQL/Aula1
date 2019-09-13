@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,28 +9,36 @@ namespace ConsoleApp1
 {
     class FindWord
     {
-        public static void Executar()
+        public  void Executar()
         {
+
+            var stopwatch = new Stopwatch();
+
             while (true)
             {
                 var wordCount = 0;
 
-                Console.WriteLine("Informa a palavra de busca: (Digite 1 para sair)");
+                Console.WriteLine("Informe a palavra de busca: (Digite 1 para sair)");
                 var palavra = Console.ReadLine();
                 if (palavra.Equals("1")) {
                     break;
                 }
-                Console.WriteLine("Metodo Busca?: ");
-                if (Console.ReadLine().Equals("for"))
-                {
+               
+                    stopwatch.Start();
                     wordCount = FindByFor(palavra);
-                }
-                else
-                {
+                    stopwatch.Stop();
+                    string aux = stopwatch.Elapsed + "";
+            
+                    stopwatch = new Stopwatch();
+                    stopwatch.Start();
                     wordCount = FindByWhile(palavra);
-                }
+                    stopwatch.Stop();
+                    
+                
                 Console.Clear();
-                Console.WriteLine($"Encontrados: {wordCount}");
+                Console.WriteLine($"Encontrados: {wordCount} em tempo: \n" +
+                    $"While: {stopwatch.Elapsed} \n" +
+                    $"For  : {aux}");
 
             }
         }

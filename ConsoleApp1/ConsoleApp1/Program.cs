@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -12,7 +13,9 @@ namespace ConsoleApp1
 
         public static void Main(string[] args)
         {
-            FindWord.Executar();     
+            andarBoneco();
+           
+         //   FindWord.Executar();  
 
         /*
             var stopwatch = new Stopwatch();
@@ -68,5 +71,27 @@ Descricao:{2}";
 
             }*/
         }
+
+        public static void andarBoneco() {
+            string c = "(+ -)";
+            string b = "\n  |";
+            string p = "\n / \\ ";
+
+            while (true)
+            {
+                Console.Write(c + b + b + p);
+                Thread.Sleep(100);
+                Console.Clear();
+                if (true)
+                {
+                    c = "\n" + c;
+                    b = "\n" + (b.Substring(1, b.Length - 1));
+                    p = "\n" + (p.Substring(1, p.Length - 1));
+                }
+                Thread.Sleep(100);
+
+            }
+        }
+
     }
 }
