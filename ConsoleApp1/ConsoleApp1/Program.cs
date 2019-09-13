@@ -13,7 +13,8 @@ namespace ConsoleApp1
 
         public static void Main(string[] args)
         {
-            game();
+            Aula04.Exercicio07semArray();
+            //  game();
             /*
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
@@ -188,10 +189,10 @@ Descricao:{2}";
             while (true) {
                 Console.WriteLine(p1);
                 Console.WriteLine(p2);
-                Thread.Sleep(50);
+                Thread.Sleep(10);
 
                 Console.Clear();
-                Thread.Sleep(50);
+                Thread.Sleep(10);
                 if (p1.Length == 40) {
                     Console.Clear();
                     p2 = null;
@@ -234,7 +235,6 @@ Descricao:{2}";
                 if (v == "5")
                 {
                     p2 = " " + p2;
-
                 }
                 
             }

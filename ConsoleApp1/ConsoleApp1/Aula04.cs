@@ -42,45 +42,15 @@ namespace ConsoleApp1
         }
 
 
-        public static void Exercicio07()
+
+        public static void Exercicio07semArray()
         {
             Console.WriteLine("Informe o texto: ");
             string texto = Console.ReadLine();
-            char[] aux = texto.ToCharArray();
-            int countA = 0;
-            int countE = 0;
-            int countI = 0;
-            int countO = 0;
-            int countU = 0;
-
-            for (int i = 0; i < texto.Length; i++)
-            {
-                char c = aux[i];
-                switch (c)
-                {
-                    case 'a':
-                        countA++;
-                        break;
-                    case 'e':
-                        countE++;
-                        break;
-                    case 'i':
-                        countI++;
-                        break;
-                    case 'o':
-                        countO++;
-                        break;
-                    case 'u':
-                        countU++;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            Console.WriteLine($"a: {countA}\ne: {countE}\ni: {countI}\no: {countO}\nu: {countU}\n");
+            Console.WriteLine($"a: {texto.Split('a').Length - 1}\ne: {texto.Split('e').Length - 1}\n" +
+                $"i: {texto.Split('i').Length - 1}\no: {texto.Split('o').Length - 1}\nu: {texto.Split('u').Length - 1}\n");
             Console.ReadKey();
         }
-
 
     }
 }
