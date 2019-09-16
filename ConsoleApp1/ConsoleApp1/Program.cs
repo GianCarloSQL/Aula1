@@ -13,7 +13,8 @@ namespace ConsoleApp1
 
         public static void Main(string[] args)
         {
-            Aula04.Exercicio07semArray();
+          
+            //Aula04.Exercicio07semArray();
             //  game();
             /*
                 var stopwatch = new Stopwatch();
