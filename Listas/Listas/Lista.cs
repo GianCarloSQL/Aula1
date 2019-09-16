@@ -8,12 +8,12 @@ namespace Listas
 {
 
 
-    class Lista<T>
+    class ListaEncadeada<T>
     {
 
         NoLista<T> atual;
 
-        public Lista()
+        public ListaEncadeada()
         {
 
         }
@@ -32,7 +32,7 @@ namespace Listas
             NoLista<T> no = atual;
             while (no != null)
             {
-                aux += no.getInfo() + ",";
+                aux += no.getInfo() + "\n";
 
                 no = no.getProx();
             }
