@@ -11,17 +11,17 @@ namespace Semana02
     {
         static void Main(string[] args)
         {
-            buscaAutomovel("nome:Jetta,marca:Volkswagen,ano:2014,cambio:automatico,descricao:porta direita nao abre;nome:Gol,marca:Volkswagen,ano:2015,cambio:manual,descricao:fazendo barulho estranho;nome:Corolla,marca:Toyota,ano:2019,cambio:automatico,descricao:completo");
+            BuscaAutomovel("nome:Jetta,marca:Volkswagen,ano:2014,cambio:automatico,descricao:Porta direita nao abre;nome:Gol,marca:Volkswagen,ano:2015,cambio:manual,descricao:Faz barulho estranho;nome:Corolla,marca:Toyota,ano:2019,cambio:automatico,descricao:Carro de tiozao;nome:Mustang,marca:Ford,ano:2010,cambio:automatico,descricao:Voce nao pode pagar");
         }
 
-        private static void buscaAutomovel(string bandoDeDados)
+        private static void BuscaAutomovel(string bandoDeDados)
         {
             var aux = bandoDeDados.Split(';');
             while (true)
             {
                 Console.WriteLine("Informe o nome do veiculo: (1 - Sair)");
                 var veiculoBusca = Console.ReadLine();
-                if (veiculoBusca=="1")
+                if (veiculoBusca == "1")
                     break;
                 foreach (var item in aux)
                 {
@@ -30,6 +30,11 @@ namespace Semana02
                     {
                         split[i] = split[i].Split(':')[1];
                     }
+                    //split[0] = nome
+                    //split[1] = marca
+                    //split[2] = ano
+                    //split[3] = cambio
+                    //split[4] = descricao
                     if (split[0] == veiculoBusca)
                     {
                         Console.WriteLine($"Nome Veiculo: {split[0]}\nMarca: {split[1]}\nAno: {split[2]}\nCambio: {split[3]}\nDescricao: {split[4]}");
