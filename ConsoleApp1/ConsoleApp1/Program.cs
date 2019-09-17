@@ -13,7 +13,8 @@ namespace ConsoleApp1
 
         public static void Main(string[] args)
         {
-          
+            Arvore(20);
+            Thread.Sleep(100000);
             //Aula04.Exercicio07semArray();
             //  game();
             /*
@@ -128,7 +129,7 @@ Descricao:{2}";
                     Console.WriteLine(p2);
                     anda = false;
                 }
-                Thread.Sleep(10);
+                Thread.Sleep(5);
                 Console.Clear();
 
                 c = " " + c;
@@ -136,7 +137,7 @@ Descricao:{2}";
                 p = " " + p;
                 mao = " " + mao;
                 p2 = " " + p2;
-                Thread.Sleep(10);
+                Thread.Sleep(5);
 
 
             }
@@ -243,5 +244,19 @@ Descricao:{2}";
         static string p1 = "P1";
         static  string p2 = "P2";
 
+        private static void Arvore(int nivel)
+        {
+            for (int linha = 1; linha <= nivel; linha++)
+            {
+                for (int coluna = 1; coluna <= linha; coluna++)
+                {
+                    Console.Write ("*");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("||");
+        }
+
     }
+    
 }
