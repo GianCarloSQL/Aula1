@@ -8,7 +8,7 @@ namespace Listas
 {
 
 
-    class ListaEncadeada<T> 
+   public  class ListaEncadeada<T> 
     {
 
         NoLista<T> atual;
