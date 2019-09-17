@@ -8,7 +8,7 @@ namespace Listas
 {
 
 
-    class ListaEncadeada<T>
+    class ListaEncadeada<T> 
     {
 
         NoLista<T> atual;
@@ -38,6 +38,8 @@ namespace Listas
             }
             return aux.Substring(0,aux.Length-1);
         }
+
+       // public 
     }
 
 }
