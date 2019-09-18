@@ -2,22 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Bibliotecas
 {
-    public class Aula04
+    public class Calculos
     {
-
-        public int numero { get; set; }
-
-        public void GetInformacoes<T>(List<T> lista) {
-            
-          lista.ForEach(i => Console.WriteLine(i));
+        public double CalculaArea(double lado)
+        {
+            return lado * lado;
+        }
+        /// <summary>
+        /// Este metodo retorna uma lista com numeros pares
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <returns> lista de numeros pares</returns>
+        public List<int> ListaDePares(List<int> lista)
+        {
+            // retorna uma lista com os pares
+            return lista.Where(i => (i % 2 == 0)).ToList();
+            // retorna uma lista com 0 se o numero for par e 1 se for impar
+            // return lista.Select(i => (i %2== 0) ? i = 0 : i = 1).ToList();         
         }
 
-        public string GetImagem() {
+        public static void ListaCervejas()
+        {
+
+            var listaCervejas = new List<string>
+            {
+                "Budweiser",
+                "Original",
+                "Corona",
+                "Brahma ",
+                "Stella"
+            };
+
+            listaCervejas.ForEach(item => Console.WriteLine(item));
+        }
+
+        public string GetImagem()
+        {
             return @"                                                                                           #&&&%%(#%%%%*%%&%,                                                                                        
                                                                                            #%%#%*##/&(&%%#.                                                                                       
                                                                                            *@@@@@@@@@@@@@@@%                                                                                         
@@ -116,50 +140,5 @@ namespace ConsoleApp1
                                                                              /%&&&@@@@@@@@@@@@&@@@@@@@@@@@@@@@@@@&@&&&.                                                                              
                                                                                 (@&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&&%                                                                                 ";
         }
-
-
-        public static void PedeInformacao()
-        {
-
-            while (true)
-            {
-                Console.WriteLine("Digite a sua idade: ");
-                int idade = int.Parse(Console.ReadLine());
-                if (ValidaIdade(idade))
-                {
-                    break;
-                }
-                if (idade >= 18)
-                {
-                    Console.WriteLine("Voce pode beber bebidas alcoolicas");
-                }
-                else
-                {
-                    Console.WriteLine("Voce nao pode beber bebidas alcoolicas");
-                }
-
-
-
-            }
-
-
-        }
-        public static bool ValidaIdade(int idade)
-        {
-            return (idade >= 99 || idade < 0) ? true : false;
-        }
-
-
-
-        public static void Exercicio07semArray()
-        {
-            Console.WriteLine("Informe o texto: ");
-            string texto = Console.ReadLine();
-            Console.WriteLine($"a: {texto.Split('a').Length - 1}\ne: {texto.Split('e').Length - 1}\n" +
-                $"i: {texto.Split('i').Length - 1}\no: {texto.Split('o').Length - 1}\nu: {texto.Split('u').Length - 1}\n");
-            Console.ReadKey();
-        }
-
     }
 }
-

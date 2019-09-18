@@ -16,14 +16,14 @@ namespace Listas
 
         public static void Main(string[] args)
         {
-            // testSingleton();
+             testSingleton();
             // Console.WriteLine(FormataNumeroRealEmBitcoin(1));
-            Console.WriteLine("Valor a ser convertido: ");
+          /*  Console.WriteLine("Valor a ser convertido: ");
             double valor = double.Parse(Console.ReadLine());
             Console.WriteLine("Moeda: ");
             TipoMoeda moeda = (TipoMoeda)Enum.Parse(typeof(TipoMoeda), Console.ReadLine());
             Console.WriteLine( CovertCoin(valor, moeda));
-
+            */
             Thread.Sleep(100000);
         }
 

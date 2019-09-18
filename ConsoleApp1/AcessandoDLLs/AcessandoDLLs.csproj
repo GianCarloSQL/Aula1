@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3F4F1B4-D9DB-460A-A760-CDDBC792E42E}</ProjectGuid>
+    <ProjectGuid>{7781FC67-C0C6-4B9C-955D-A77EB3D01DF3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Listas</RootNamespace>
-    <AssemblyName>Listas</AssemblyName>
+    <RootNamespace>AcessandoDLLs</RootNamespace>
+    <AssemblyName>AcessandoDLLs</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MinhaBiblioteca, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\svprwy001\alunos\hbsis\PastaDlls\GabrielYago\MinhaBiblioteca.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,10 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NoLista.cs" />
-    <Compile Include="ListaEncadeada.cs" />
-    <Compile Include="AbstractClass.cs" />
-    <Compile Include="TipoMoeda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

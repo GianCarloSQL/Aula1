@@ -12,8 +12,9 @@ namespace ConsoleApp1
     {
 
         public static void Main(string[] args)
-        {
-            Arvore(20);
+       {
+            Aula04 a = new Aula04();
+            Console.Write(a.GetImagem());
             Thread.Sleep(100000);
             //Aula04.Exercicio07semArray();
             //  game();
@@ -27,9 +28,7 @@ namespace ConsoleApp1
                 for (int i =0; i< lista.Count; i++) {
                     Console.WriteLine(lista[i]);
                 }
-
                 Console.ReadKey();
-
                 */
 
             /*
@@ -254,6 +253,10 @@ Descricao:{2}";
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("||");
+            Console.WriteLine("||");
+            Console.WriteLine("||");
+            Console.WriteLine("||");
             Console.WriteLine("||");
         }
 

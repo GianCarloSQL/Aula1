@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3F4F1B4-D9DB-460A-A760-CDDBC792E42E}</ProjectGuid>
+    <ProjectGuid>{3D85B223-DD51-4F16-A5E7-96E25B6D90D7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Listas</RootNamespace>
-    <AssemblyName>Listas</AssemblyName>
+    <RootNamespace>ConsoleApp2</RootNamespace>
+    <AssemblyName>ConsoleApp2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NoLista.cs" />
-    <Compile Include="ListaEncadeada.cs" />
-    <Compile Include="AbstractClass.cs" />
-    <Compile Include="TipoMoeda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,7 +50,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\Bibliotecas\Bibliotecas.csproj">
+      <Project>{1eaf447d-532b-44da-903c-8ebf8912f6cf}</Project>
+      <Name>Bibliotecas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\ConsoleApp1.csproj">
+      <Project>{04858eb6-0415-4560-9ab9-0e5767b98829}</Project>
+      <Name>ConsoleApp1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

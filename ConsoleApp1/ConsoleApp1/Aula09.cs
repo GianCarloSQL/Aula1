@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Aula08
+    public class Aula08
     {
-
+        public int area { get; set; }
     }
         
 
