@@ -8,8 +8,8 @@ namespace Classes.Model
 {
     class PessoaFisica : Pessoa
     {
-
-        public new double GetImposto(double valor)
+        
+        public override double GetImposto(double valor)
         {
             return valor * 2;
         }

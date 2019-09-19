@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CalculaImposto.cs" />
+    <Compile Include="Model\Carro.cs" />
     <Compile Include="Model\CestaFrutas.cs" />
+    <Compile Include="Model\ListaBranca.cs" />
     <Compile Include="Model\Pessoa.cs" />
     <Compile Include="Model\PessoaFisica.cs" />
     <Compile Include="Model\PessoaJuridica.cs" />

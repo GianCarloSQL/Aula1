@@ -8,9 +8,9 @@ namespace Classes.Model
 {
     class PessoaJuridica : Pessoa
     {
-        public new double GetImposto(double valor)
+        public override double GetImposto(double valor)
         {
-            return valor * 3;
+            return valor * 4;
         }
     }
 }

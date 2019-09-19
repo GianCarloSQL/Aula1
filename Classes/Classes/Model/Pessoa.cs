@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace Classes.Model
 {
-    class Pessoa : CalculaImposto
+    abstract class Pessoa 
     {
 
         public string nome { get; set; }
         public int idade { get; set; }
 
-        public double GetImposto(double valor) {
-            return 0;
-        }
+        public abstract double GetImposto(double valor);
+        
+
+
 
     }
 }
