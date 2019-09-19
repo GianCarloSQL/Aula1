@@ -23,6 +23,7 @@ namespace Classes
             */
 
             //ExercicioCarro();
+            popula();
 
             Console.ReadKey();
         }
@@ -60,7 +61,23 @@ namespace Classes
             lista.ForEach(i => Console.WriteLine(i.ToString() + "\n-----------------------------"));
         }
 
+        public static void popula()
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                int n = new Random().Next(100);
+                if (!list.Contains(n))
+                {
+                    list.Add(n);
+                    continue;
+                }
+                i--;
+            }
+            //delegate, anonimous method
+            List<int> listaNova = list.Where(i => i%2==0).ToList();
+           
+        }
 
-       
     }
 }

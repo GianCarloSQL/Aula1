@@ -20,7 +20,6 @@ namespace Listas
 
         }
 
-
         public void SetValue(int v) { this.value = v; }
         public int GetValue() { return value; }
 
