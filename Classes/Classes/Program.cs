@@ -22,8 +22,8 @@ namespace Classes
             Console.WriteLine(p.GetImposto(10));
             */
 
-            //ExercicioCarro();
-            popula();
+         //   ExercicioCarro();
+           
 
             Console.ReadKey();
         }
@@ -47,7 +47,7 @@ namespace Classes
                 Console.WriteLine("Informe o valor: ");
                 var valor = Console.ReadLine();
                 var placa = "";
-                while (ListaBranca.ValidaPlaca(placa))
+                  while (ListaBranca.ValidaPlaca(placa))
                 {
                     Console.WriteLine("Informe a placa: ");
                     placa = Console.ReadLine();
