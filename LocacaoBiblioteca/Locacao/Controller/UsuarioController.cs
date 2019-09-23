@@ -26,7 +26,7 @@ namespace Locacao.Controller
          }
  */
         public List<Usuario> GetUsuarios() {
-            return usuarios;
+            return usuarios.Where(x => x.Ativo).ToList();
         }
         public void AdicionaUsuario(Usuario u) {
             u.Id = i;

@@ -143,9 +143,10 @@ namespace Interface
         }
         public static void remover() {
             Console.WriteLine("Digite o ID do usuario a remover");
-            usuarioControl.GetUsuarios().ForEach(i => Console.WriteLine($"{i.Login}\n {i.Id}"));
+            usuarioControl.GetUsuarios().ForEach(i => Console.WriteLine($"Login: {i.Login} ID: {i.Id}"));
             var u = Console.ReadLine();
-            usuarioControl.RemoveUsuario(usuarioControl.GetUsuarios()[int.Parse(u)]);
+            // usuarioControl.RemoveUsuario(usuarioControl.GetUsuarios()[int.Parse(u)]);
+            usuarioControl.GetUsuarios().FirstOrDefault(x => x.Id == int.Parse(u)).Ativo = false;
             Console.WriteLine("Usuario removido com sucesso");
             Console.ReadKey();
         }
