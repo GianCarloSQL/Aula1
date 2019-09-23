@@ -7,13 +7,32 @@ using System.Threading.Tasks;
 
 namespace Locacao.Controller
 {
-    class LivroController
+    public class LivroController
     {
-        List<Livro> livros = new List<Livro>();
-    
+        static int cod = 3;
+       private  List<Livro> livros = new List<Livro>() {
+            new Livro(0,"the bomberman", true),
+            new Livro(1,"the fisherman", true),
+            new Livro(2,"the joker master", true),
+        };
+
+
         public LivroController(){
            
         }
-        
+
+        public void AdicionaLivro(Livro livro) {
+            livro.Disponivel = true;
+            livro.CodLivro = cod;
+            cod++;
+            livros.Add(livro);
+        }
+        public List<Livro> GetLivros() {
+            return livros;
+        }
+
+        public void RemoveLivro(Livro l) {
+            livros.Remove(l);
+        }
     }
 }

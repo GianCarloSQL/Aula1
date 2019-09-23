@@ -10,23 +10,13 @@ namespace Interface
 {
     class Program
     {
-        static List<Livro> livros = new List<Livro>() {
-            new Livro(0,"the bomberman", true),
-            new Livro(1,"the fisherman", true),
-            new Livro(2,"the joker master", true),
-        };
-        static List<Usuario> usuarios = new List<Usuario>() {
-            new Usuario("Gian", "1234"),
-            new Usuario("Pedro", "5522")
-        };
-
+        static UsuarioController usuarioControl = new UsuarioController();
+        static LivroController livroControl = new LivroController();
+        static Usuario currently = null;
         static void Main(string[] args)
         {
-            Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 0.5)");
-            while (!RealizaLoginSistema())
-            {
-                Console.WriteLine("Login ou senha errado");
-            }
+            Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 1.1)");
+            Loga();
             MenuSistema();
             Console.ReadKey();
         }
@@ -39,6 +29,10 @@ namespace Interface
                 Console.WriteLine("Menu Sistema");
                 Console.WriteLine("1 - Procurar livro");
                 Console.WriteLine("2 - Ver livros locados");
+                Console.WriteLine("3 - Cadastrar Livro");
+                Console.WriteLine("4 - Adicionar usuario");
+                Console.WriteLine("5 - Deslogar");
+                Console.WriteLine("6 - Remover usuario");
                 Console.WriteLine("0 - Sair");
                 var Menu = Console.ReadLine();
                 switch (Menu)
@@ -53,8 +47,13 @@ namespace Interface
                             Console.WriteLine(livro.ToString());
                             Console.WriteLine("Deseja alocar este livro? (sim, nao)");
                             if (Console.ReadLine().Equals("sim")) {
-                                if (livro.Disponivel) {
-
+                                if (livro.Disponivel)
+                                {
+                                    livro.Disponivel = false;
+                                    currently.livros.Add(livro);
+                                }
+                                else {
+                                    Console.WriteLine("Livro não disponivel.");
                                 }
                             }
                             Console.ReadKey();
@@ -65,34 +64,90 @@ namespace Interface
                             return;
                         }
                         break;
+                    case "3":
+                        AdicionaLivro();
+                        break;
                     case "2":
+                        Console.WriteLine("Os seus livros locados são:");
+                        currently.livros.ForEach(i => Console.WriteLine(i.Titulo));
+                        Console.ReadKey();
+                        break;
+                    case "4":
+                        AdicionaUsuario();
+                        break;
+                    case "5":
+                        if (currently != null)
+                        {
+                            currently = null;
+                            Console.WriteLine("Deslogado com sucesso!");
+                        }
+                        Console.ReadKey();
+                        Loga();
+                        break;
+                        case "6":
+                        remover();
                         break;
                     default:
                         break;
                 }
             }
         }
+
+        private static void AdicionaUsuario()
+        {
+            Console.WriteLine("Nome do usuario:");
+            var nome = Console.ReadLine();
+            Console.WriteLine("Senha");
+            var senha = Console.ReadLine();
+            Usuario u = new Usuario(nome, senha);
+            usuarioControl.AdicionaUsuario(u);
+        }
+
         /// <summary>
         /// este metodo retorna se o usuario logou com sucesso.
         /// </summary>
         /// <returns></returns>
-        private static bool RealizaLoginSistema()
+        private static Usuario RealizaLoginSistema()
         {
             Console.WriteLine("Informe suas informações de Acesso");
             Console.Write("Login: ");
             var login = Console.ReadLine();
             Console.Write("Senha: ");
             var senha = Console.ReadLine();
-            return usuarios.Any(i => i.Login == login && i.Senha == senha);
+            return usuarioControl.GetUsuarios().Find(i => i.Login == login && i.Senha == senha);
         }
         private static Livro GetLivro(string nome) {
-            foreach (var item in livros)
+            foreach (var item in livroControl.GetLivros())
             {
                 if (item.Titulo.Equals(nome)) {
                     return item;
                 }
             }
             return null;
+        }
+
+        private static void AdicionaLivro() {
+            Console.WriteLine("Cadastrar Livro no Sistema");
+            Console.WriteLine("Nome do Livro:");
+            var nome = Console.ReadLine();
+            livroControl.AdicionaLivro(new Livro(nome));
+            Console.WriteLine("Livro Cadastrado!");
+            Console.ReadKey();
+        }
+        public static void Loga() {
+            do
+            {
+                currently = RealizaLoginSistema();
+            } while (currently == null);
+            MenuSistema();
+        }
+        public static void remover() {
+            Console.WriteLine("Digite o ID do usuario a remover");
+            usuarioControl.GetUsuarios().ForEach(i => Console.WriteLine($"{i.Login}\n {i.Id}"));
+            var u = Console.ReadLine();
+            usuarioControl.RemoveUsuario(usuarioControl.GetUsuarios()[int.Parse(u)]);
+            Console.WriteLine("Usuario removido com sucesso");
+            Console.ReadKey();
         }
     }
 }

@@ -8,20 +8,26 @@ namespace Locacao.Model
 {
     public class Livro
     {
-        public Livro(int Codigo, string Titulo, bool Disponivel)
+        public Livro(string Titulo, bool Disponivel)
         {
-            this.CodLivro = CodLivro;
             this.Disponivel = Disponivel;
             this.Titulo = Titulo;
         }
-        public Livro() {
+
+        public Livro(int cod,string Titulo, bool Disponivel)
+        {
+            this.CodLivro = cod;
+            this.Disponivel = Disponivel;
+            this.Titulo = Titulo;
+        }
+        public Livro(string nome) {
+            this.Titulo = nome;
         }
 
         public int CodLivro { get; set; }
         public string Titulo { get; set; }
         public bool Disponivel { get; set; }
-
-        
+      
           public override string ToString()
         {
             return $"Titulo: {Titulo}\nCodigo: {CodLivro}\nDisponibilidade: {Disponivel}";

@@ -8,9 +8,18 @@ namespace Locacao.Model
 {
   public   class Usuario
     {
-        public Usuario(string login, string senha) {
+        public Usuario(int cod,string login, string senha) {
+            Id = cod;
             Login = login;
             Senha = senha;
+            livros = new List<Livro>();
+        }
+
+        public Usuario(string login, string senha)
+        {
+            Login = login;
+            Senha = senha;
+            livros = new List<Livro>();
         }
         public int Id { get; set; }
         public string Login { get; set; }
@@ -19,6 +28,6 @@ namespace Locacao.Model
         public int UsuarioCriacao { get; set; }
         public  DateTime DataCriacao{ get; set; }
         public DateTime DataAlteracao { get; set; }
-
+        public List<Livro> livros { get; set; }
     }
 }
