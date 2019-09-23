@@ -14,6 +14,11 @@ namespace OrdenandoListas
             this.DataNascimento = data;
             this.carteira = carteira;
         }
+
+        public Pessoa()
+        {
+            
+        }
         public  int iD { get; set; }
         public string nome { get; set; }
         public DateTime DataNascimento  { get; set; }
