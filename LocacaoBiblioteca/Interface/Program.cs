@@ -10,8 +10,8 @@ namespace Interface
 {
     class Program
     {
-        static UsuarioController usuarioControl = new UsuarioController();
-        static LivroController livroControl = new LivroController();
+      static   UsuarioController usuarioControl = new UsuarioController();
+      static  LivroController livroControl = new LivroController();
         static Usuario currently = null;
         static void Main(string[] args)
         {
@@ -33,6 +33,7 @@ namespace Interface
                 Console.WriteLine("4 - Adicionar usuario");
                 Console.WriteLine("5 - Deslogar");
                 Console.WriteLine("6 - Remover usuario");
+                Console.WriteLine("7 - Remover Livro");
                 Console.WriteLine("0 - Sair");
                 var Menu = Console.ReadLine();
                 switch (Menu)
@@ -46,19 +47,22 @@ namespace Interface
                         {
                             Console.WriteLine(livro.ToString());
                             Console.WriteLine("Deseja alocar este livro? (sim, nao)");
-                            if (Console.ReadLine().Equals("sim")) {
+                            if (Console.ReadLine().Equals("sim"))
+                            {
                                 if (livro.Disponivel)
                                 {
                                     livro.Disponivel = false;
                                     currently.livros.Add(livro);
                                 }
-                                else {
+                                else
+                                {
                                     Console.WriteLine("Livro não disponivel.");
                                 }
                             }
                             Console.ReadKey();
                         }
-                        else {
+                        else
+                        {
                             Console.WriteLine("Livro nao encontrado");
                             Console.ReadKey();
                             return;
@@ -84,13 +88,29 @@ namespace Interface
                         Console.ReadKey();
                         Loga();
                         break;
-                        case "6":
+                    case "6":
                         remover();
                         break;
+                    case "7":
+                        RemoverLivro();
+                        break;
+
                     default:
                         break;
                 }
             }
+        }
+
+        private static void RemoverLivro()
+        {
+
+            Console.WriteLine("Remover Livro no Sistema");
+            Console.WriteLine("Nome do Livro:");
+            var nome = Console.ReadLine();
+            //
+            livroControl.RemoveLivro(livroControl.GetLivros().FirstOrDefault(x => x.Titulo == nome));
+            Console.WriteLine("Livro Removido com sucesso!");
+            Console.ReadKey();
         }
 
         private static void AdicionaUsuario()
@@ -116,17 +136,20 @@ namespace Interface
             var senha = Console.ReadLine();
             return usuarioControl.GetUsuarios().Find(i => i.Login == login && i.Senha == senha);
         }
-        private static Livro GetLivro(string nome) {
+        private static Livro GetLivro(string nome)
+        {
             foreach (var item in livroControl.GetLivros())
             {
-                if (item.Titulo.Equals(nome)) {
+                if (item.Titulo.Equals(nome))
+                {
                     return item;
                 }
             }
             return null;
         }
 
-        private static void AdicionaLivro() {
+        private static void AdicionaLivro()
+        {
             Console.WriteLine("Cadastrar Livro no Sistema");
             Console.WriteLine("Nome do Livro:");
             var nome = Console.ReadLine();
@@ -134,21 +157,45 @@ namespace Interface
             Console.WriteLine("Livro Cadastrado!");
             Console.ReadKey();
         }
-        public static void Loga() {
+        public static void Loga()
+        {
             do
             {
                 currently = RealizaLoginSistema();
             } while (currently == null);
             MenuSistema();
         }
-        public static void remover() {
+        public static void remover()
+        {
             Console.WriteLine("Digite o ID do usuario a remover");
-            usuarioControl.GetUsuarios().ForEach(i => Console.WriteLine($"Login: {i.Login} ID: {i.Id}"));
+           usuarioControl.GetUsuarios().ForEach(i => Console.WriteLine($"Login: {i.Login} ID: {i.Id}"));
             var u = Console.ReadLine();
-            // usuarioControl.RemoveUsuario(usuarioControl.GetUsuarios()[int.Parse(u)]);
-            usuarioControl.GetUsuarios().FirstOrDefault(x => x.Id == int.Parse(u)).Ativo = false;
+            //usuarioControl.RemoveUsuario(usuarioControl.GetUsuarios()[int.Parse(u)]);
+           usuarioControl.GetUsuarios()[int.Parse(u)].Ativo = false;
+            //usuarioControl.GetUsuarios().FirstOrDefault(x => x.Id == int.Parse(u)).Ativo = false;
             Console.WriteLine("Usuario removido com sucesso");
             Console.ReadKey();
+        }
+
+        public static void testarAgragar()
+        {
+            string[] fruits = { "apple", "mango", "orange", "passionfruit", "grape" };
+
+            // Determine whether any string in the array is longer than "banana".
+            string longestName =
+                fruits.Aggregate("banana",
+                                (longest, next) =>
+                                    next.Length > longest.Length ? next : longest,
+                                // Return the final result as an upper case string.
+                                fruit => fruit.ToUpper());
+
+            Console.WriteLine(
+                "The fruit with the longest name is {0}.",
+                longestName);
+
+            // This code produces the following output:
+            //
+            // The fruit with the longest name is PASSIONFRUIT.
         }
     }
 }

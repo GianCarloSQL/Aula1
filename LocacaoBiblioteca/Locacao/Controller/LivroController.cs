@@ -9,30 +9,28 @@ namespace Locacao.Controller
 {
     public class LivroController
     {
-        static int cod = 3;
-       private  List<Livro> livros = new List<Livro>() {
-            new Livro(0,"the bomberman", true),
-            new Livro(1,"the fisherman", true),
-            new Livro(2,"the joker master", true),
-        };
+        //public List<Livro> livros;
+         LocacaoContext db = new LocacaoContext();
 
-
-        public LivroController(){
-           
+        public LivroController()
+        {
+       
         }
 
-        public void AdicionaLivro(Livro livro) {
-            livro.Disponivel = true;
-            livro.CodLivro = cod;
-            cod++;
-            livros.Add(livro);
+        public void AdicionaLivro(Livro livro)
+        {
+            livro.CodLivro = LocacaoContext.indiceLivros;
+            db.livros.Add(livro);
+            LocacaoContext.indiceLivros++;
         }
-        public List<Livro> GetLivros() {
-            return livros;
+        public List<Livro> GetLivros()
+        {
+            return db.livros;
         }
 
-        public void RemoveLivro(Livro l) {
-            livros.Remove(l);
+        public void RemoveLivro(Livro l)
+        {
+            db.livros.Remove(l);
         }
     }
 }

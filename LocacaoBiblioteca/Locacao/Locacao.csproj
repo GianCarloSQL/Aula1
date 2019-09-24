@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Controller\LivroController.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Model\Livro.cs" />
+    <Compile Include="Model\LocacaoContext.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -23,7 +23,7 @@ namespace OrdenandoListas
             Console.ReadKey();
             */
             #endregion
-           
+
             CriaLista();
             questao3();
             Console.ReadKey();
@@ -32,30 +32,42 @@ namespace OrdenandoListas
         public static void questao1()
         {
             Console.WriteLine("Listar estas informações em ordem crescente Pelo nome e decrescente  Pela data de nascimento");
-            pessoas.OrderByDescending(x => x.DataNascimento).ToList().ForEach(x => Console.WriteLine($"{x.iD} : {x.nome} : {x.DataNascimento} : {x.carteira}"));
+            pessoas.OrderByDescending(x => x.DataNascimento).ToList().ForEach(x => Console.WriteLine(x.ToString()));
             Console.WriteLine("-------------------------------------------------------------");
-            pessoas.OrderBy(x => x.nome).ToList().ForEach(x => Console.WriteLine($"{x.iD} : {x.nome} : {x.DataNascimento} : {x.carteira}"));
+            pessoas.OrderBy(x => x.Nome).ToList().ForEach(x => Console.WriteLine(x.ToString()));
         }
         public static void questao2()
         {
             Console.WriteLine("Listar as pessoas que contem mais de 500 reais na carteira ");
-            pessoas.Where(x => x.carteira >= 500).ToList().ForEach(x => Console.WriteLine($"{x.iD} : {x.nome} : {x.DataNascimento} : {x.carteira}"));
+            pessoas.Where(x => x.Carteira >= 500).ToList().ForEach(x => Console.WriteLine(x.ToString()));
         }
 
         public static void questao3()
         {
             Console.WriteLine("Listar as pessoas com mais de 18 anos - Bônus");
-            pessoas.Where(x => (2019 - x.DataNascimento.Year) > 18).ToList().ForEach(x => Console.WriteLine($"{x.iD} : {x.nome} : {x.DataNascimento} : {x.carteira}"));
+            pessoas.Where(x => (2019 - x.DataNascimento.Year) > 18).ToList().ForEach(x => Console.WriteLine(x.ToString()));
         }
 
         public static void questao4()
         {
             Console.WriteLine("Listar as pessoas com menos de 16 anos - Bônus");
-            pessoas.Where(x => (2019 - x.DataNascimento.Year) <= 16).ToList().ForEach(x => Console.WriteLine($"{x.iD} : {x.nome} : {x.DataNascimento} : {x.carteira}"));
+            pessoas.Where(x => (2019 - x.DataNascimento.Year) <= 16).ToList().ForEach(x => Console.WriteLine(x.ToString()));
+        }
+
+
+        /// <summary>
+        /// string format
+        /// </summary>
+        public static void Mostrar()
+        {
+            string template = "ID: {0:3}  Nome: {1:10}";
+            string text = string.Format(template, pessoas[1].ID, pessoas[1].Nome);
+            Console.WriteLine(text);
         }
 
         public static void CriaLista()
         {
+            //   pessoas.Add(new Pessoa(1, "Spears", DateTime.Parse( "07/11/2004"), 846.96));
             string bancoDeDados = @"
 1,Spears,07/11/2004,846.96;
 2,Swanson,20/06/2003,233.09;
@@ -84,7 +96,12 @@ namespace OrdenandoListas
                 Pessoa p = new Pessoa(int.Parse(pessoa[0]), pessoa[1], DateTime.Parse(pessoa[2]), double.Parse(pessoa[3]));
                 pessoas.Add(p);
             }
-
         }
+
+        public List<Pessoa> GetPessoasOrdenadas() {
+            return pessoas.OrderBy(i => i.Nome).ToList();
+        }
+
+
     }
 }
