@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51876C8B-8238-4780-A9AB-963A0FE4FC15}</ProjectGuid>
+    <ProjectGuid>{E008B902-E620-4926-A428-165EA0A8D49B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Linq</RootNamespace>
-    <AssemblyName>Linq</AssemblyName>
+    <RootNamespace>ExternalDLL</RootNamespace>
+    <AssemblyName>ExternalDLL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ListagemDeCervejas">
+      <HintPath>\\svprwy001\alunos\hbsis\DllsComComentarios\11\ListagemDeCervejas.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,19 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CarroController.cs" />
-    <Compile Include="Model\Carro.cs" />
-    <Compile Include="Crianca.cs" />
-    <Compile Include="Expressoes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Venda.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Banco\BancoDeDados.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

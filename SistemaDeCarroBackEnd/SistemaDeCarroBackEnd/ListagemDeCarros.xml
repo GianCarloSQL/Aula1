@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ListagemDeCarros</name>
+    </assembly>
+    <members>
+        <member name="M:ListagemDeCarros.Controller.CarroController.ListaCarrosConsole">
+            <summary>
+            Este Metodo mostra todos os carros existentes na lista de Carros no Console
+            </summary>
+        </member>
+        <member name="M:ListagemDeCarros.Controller.CarroController.ListaCarros">
+            <summary>
+            Retorna todos os carros contidos na lista separados por linha
+            </summary>
+            <returns> string contendo os carros da lista</returns>
+        </member>
+        <member name="M:ListagemDeCarros.Controller.CarroController.ListaCarros(System.String,System.String)">
+            <summary>
+            Este metodo percorre a lista de carros e retorna todos os carros 
+            que satisfaçam a condição informada pelos parametros.
+            </summary>
+            <param name="prop"> Propriedade da Classe</param>
+            <param name="igual"> Valor para comparar com a propriedade</param>
+            <returns></returns>
+        </member>
+        <member name="M:ListagemDeCarros.Model.SistemaCarrosContext.#ctor">
+            <summary>
+            XGH APPROVED
+            </summary>
+        </member>
+    </members>
+</doc>
