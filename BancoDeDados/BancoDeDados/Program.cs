@@ -10,6 +10,16 @@ namespace BancoDeDados
     {
         static void Main(string[] args)
         {
+            try
+            {
+                int? idade = null;
+                int b = idade ?? 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
