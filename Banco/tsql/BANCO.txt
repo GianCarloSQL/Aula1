@@ -1,0 +1,25 @@
+insert into Pedido (Numero,Valor,ClienteId) values ('N000001',234.23,1);
+insert into Cliente (Nome) values ('Gian C');
+
+
+insert into Cliente (Nome) values ('Antue');
+insert into Pedido (Numero,Valor,ClienteId) values ('N000002',234.23,2),('N000003',234.23,2),('N000004',234.23,2) 
+
+insert into Cliente (Nome) values ('Jean Jacques Roussel');
+insert into Pedido (Numero,Valor,ClienteId) values ('N00005',234.23,3),('N000006',234.23,3),('N000007',234.23,3) 
+
+insert into Cliente (Nome) values ('Felipe');
+insert into Pedido (Numero,Valor,ClienteId) values ('N000002',234.23,4),('N000003',234.23,4),('N000004',234.23,4) 
+
+
+select c.Nome as'Cliente', p.Valor as 'Valor Total',p.Numero, p.DataCriacao as 'Data'  from Pedido p
+inner join Cliente c on p.ClienteId = c.Id
+where c.Id = 2;
+
+select  sum(VALOR) AS SOMA ,  c.Nome, ClienteId from Pedido p
+inner join Cliente c on p.ClienteId = c.Id
+GROUP BY p.ClienteId, c.Nome
+
+
+
+

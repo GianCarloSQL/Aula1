@@ -1,0 +1,37 @@
+CREATE DATABASE BaseSistemaLocacao -- criamos nossa base de dados 
+GO
+USE BaseSistemaLocacao --- Indicamos que estamos utilizano ele para os comandos logo a baixo
+
+CREATE TABLE [dbo].[Usuarios]
+(
+    [Id]               INT         IDENTITY (1, 1) NOT NULL,
+    [Nome]             NCHAR (100) NULL,
+    [Login]            NCHAR (50)  NULL,
+    [Senha]            NCHAR (50)  NULL,
+    [Ativo]            BIT         DEFAULT ((1)) NULL,
+    [UsuarioCriacao]   INT         DEFAULT ((0)) NULL,
+    [UsuarioAlteracao] INT         DEFAULT ((0)) NULL,
+    [DataCriacao]      DATETIME    DEFAULT (getdate()) NULL,
+    [DataAlteracao]    DATETIME    DEFAULT (getdate()) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+)
+GO
+CREATE TABLE [dbo].[Marca] 
+(
+    [Id]     INT        NOT NULL,
+    [Codigo] INT        NULL,
+    [Nome]   NCHAR (20) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+)
+GO
+insert into Marcas  
+(Codigo,Nome)  
+values 
+(1,'Volkswagen') , (2,'Chevrolet')
+GO
+GO
+insert into Usuarios 
+([Nome], [Login],[Senha])  
+values 
+('Administrador', 'Admin','Admin')
+GO
