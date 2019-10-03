@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[Salarios]
     [DataAlteracao]    DATETIME       DEFAULT (getdate()) NULL,
 )
 GO
-CREATE TABLE [dbo].[Funcionario]
+CREATE TABLE [dbo].[Funcionarios]
 (
 	[Id] INT NOT NULL PRIMARY KEY identity (1,1), 
     [Nome] NCHAR(10) NULL, 
@@ -28,6 +28,6 @@ CREATE TABLE [dbo].[Funcionario]
 )
 GO
 
-insert into Funcionario (Nome) values ('Gian C','Pedro H','Antue B','Jean Jacques Rousell');
+insert into Funcionarios (Nome) values ('Gian C','Pedro H','Antue B','Jean Jacques Rousell');
 GO
 insert into Salarios (Funcionario,Valor) values (1,100,GETDATE()),(1,100,GETDATE()),(1,100,GETDATE()) ;
