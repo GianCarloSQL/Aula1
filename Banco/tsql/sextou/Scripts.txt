@@ -1,0 +1,23 @@
+
+insert into Funcionarios (Nome) values ('Gian C'),('Pedro H'),('Antue B'),('Jean Jacques');
+insert into Salarios (Funcionarios,Valor) values (15,100),(15,200),(15,300);
+*/
+
+
+select * from Salarios;
+select * from Funcionarios;
+
+select f.Nome,s.Valor, CONVERT(date,s.DataCriacao) from Funcionarios f 
+inner join Salarios s on f.Id = s.Funcionarios
+where s.DataCriacao = '07/05/2019';
+
+
+select f.Nome, count(s.Valor) as 'Quantidade Pagamentos',
+sum (s.Valor) as 'Valor Total'
+from Funcionarios f 
+	inner join Salarios s on f.Id = s.Funcionarios
+group by f.Nome;
+
+select * from Salarios  where Id between 3 and 8;
+
+update Funcionarios set DataSaida = '10/03/2019', DataAlteracao = GETDATE(),Ativo = 0 where Nome like '%Gian C%'
