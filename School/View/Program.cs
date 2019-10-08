@@ -14,8 +14,9 @@ namespace View
         static void Main(string[] args)
         {
             Console.WriteLine("SISTEMA DE GERENCIAMENTO DE ALUNOS");
-            var opcao ="";
-            while (true) {
+            var opcao = "";
+            while (true)
+            {
                 Console.WriteLine("Selecione uma Opção ");
                 Console.WriteLine("0 - Sair ");
                 Console.WriteLine("1 - Mostrar todos os alunos");
@@ -24,7 +25,7 @@ namespace View
                 opcao = Console.ReadLine();
                 switch (opcao)
                 {
-                    case "0":                    
+                    case "0":
                         System.Environment.Exit(0);
                         break;
                     case "1":

@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{05D25426-EE7F-4AD8-A996-8586AEB2F598}</ProjectGuid>
+    <ProjectGuid>{974EED7C-CAC5-4D63-B1F2-51B3C38782EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SchoolBackEnd</RootNamespace>
-    <AssemblyName>SchoolBackEnd</AssemblyName>
+    <RootNamespace>BackEnd</RootNamespace>
+    <AssemblyName>BackEnd</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,31 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\AlunoController.cs" />
-    <Compile Include="Migrations\201910081145203_InitialCreate.cs" />
-    <Compile Include="Migrations\201910081145203_InitialCreate.designer.cs">
-      <DependentUpon>201910081145203_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910081208511_Migracao.cs" />
-    <Compile Include="Migrations\201910081208511_Migracao.designer.cs">
-      <DependentUpon>201910081208511_Migracao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\Aluno.cs" />
-    <Compile Include="Model\Context.cs" />
+    <Compile Include="Controller\CervejaController.cs" />
+    <Compile Include="Model\Cerveja.cs" />
+    <Compile Include="Model\CervejaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910081145203_InitialCreate.resx">
-      <DependentUpon>201910081145203_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910081208511_Migracao.resx">
-      <DependentUpon>201910081208511_Migracao.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
