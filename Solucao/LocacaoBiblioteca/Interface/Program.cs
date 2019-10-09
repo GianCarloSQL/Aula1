@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Locacao.Controller;
 using Locacao.Model;
@@ -10,6 +11,7 @@ namespace Interface
 {
     class Program
     {
+        static Task Loading = new Task(ProgressBar);
         static UsuarioController usuarioControl = new UsuarioController();
         static LivroController livroControl = new LivroController();
         static Usuario currently = null;
@@ -152,6 +154,7 @@ namespace Interface
             var login = Console.ReadLine();
             Console.Write("Senha: ");
             var senha = Console.ReadLine();
+            Loading.Start();
             return usuarioControl.GetLista().FirstOrDefault(i => i.Login == login && i.Senha == senha);
         }
         private static Livro GetLivro(string nome)
@@ -182,9 +185,25 @@ namespace Interface
             do
             {
                 currently = RealizaLoginSistema();
+
             } while (currently == null);
             MenuSistema();
         }
+        public static void ProgressBar()
+        {
+            Console.Clear();
+            Console.WriteLine("Wait");
+            for (int i = 0; i < 22; i++)
+            {
+                var b = "_";
+                Console.Write(b);
+                Thread.Sleep(100);
+                b += "_";
+            }
+            Console.Clear();
+
+        }
+
         public static void RemoverUsuario()
         {
             Console.WriteLine("Digite o ID do usuario a remover");
