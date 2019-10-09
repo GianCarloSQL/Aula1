@@ -16,7 +16,7 @@ namespace CelularLibrary.Model
         public int UsuarioCriacao { get; set; } = 0;
         public int UsuarioAlteracao { get; set; } = 0;
         public DateTime DataCriacao { get; set; } = DateTime.Now;
-        public DateTime DataAlteracao { get; set; }
+        public DateTime DataAlteracao { get; set; } = DateTime.Now;
 
         public abstract void Update();
     }

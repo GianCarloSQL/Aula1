@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\AbstractController.cs" />
+    <Compile Include="Control\CelController.cs" />
     <Compile Include="Control\CelularController.cs" />
     <Compile Include="Model\AbstractControl.cs" />
     <Compile Include="Model\Celular.cs" />
