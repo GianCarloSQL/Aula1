@@ -10,8 +10,8 @@ namespace Interface
 {
     class Program
     {
-      static   UsuarioController usuarioControl = new UsuarioController();
-      static  LivroController livroControl = new LivroController();
+        static UsuarioController usuarioControl = new UsuarioController();
+        static LivroController livroControl = new LivroController();
         static Usuario currently = null;
         static void Main(string[] args)
         {
@@ -34,6 +34,7 @@ namespace Interface
                 Console.WriteLine("5 - Deslogar");
                 Console.WriteLine("6 - Remover usuario");
                 Console.WriteLine("7 - Remover Livro");
+                Console.WriteLine("8 - Listar");
                 Console.WriteLine("0 - Sair");
                 var Menu = Console.ReadLine();
                 switch (Menu)
@@ -51,6 +52,8 @@ namespace Interface
                             {
                                 if (livro.Disponivel)
                                 {
+
+
                                     livro.Disponivel = false;
                                     currently.livros.Add(livro);
                                 }
@@ -89,12 +92,25 @@ namespace Interface
                         Loga();
                         break;
                     case "6":
-                        remover();
+                        RemoverUsuario();
                         break;
                     case "7":
                         RemoverLivro();
                         break;
-
+                    case "8":
+                        Console.WriteLine("1 - livros | 2 - usuarios");
+                        if (int.Parse(Console.ReadLine()) == 1)
+                        {
+                            Console.WriteLine("ID           Titulo                                Disponivel?");
+                            livroControl.GetLista().ToList().ForEach(l => Console.WriteLine(l.ToString()));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Login                  Senha");
+                            usuarioControl.GetLista().ToList().ForEach(u => Console.WriteLine(u.ToString()));
+                        }
+                        Console.ReadKey();
+                        break;
                     default:
                         break;
                 }
@@ -107,8 +123,10 @@ namespace Interface
             Console.WriteLine("Remover Livro no Sistema");
             Console.WriteLine("Nome do Livro:");
             var nome = Console.ReadLine();
-            //
-            livroControl.RemoveLivro(livroControl.GetLivros().FirstOrDefault(x => x.Titulo == nome));
+            livroControl.GetLista().ToList().ForEach(i => Console.WriteLine($"Login: {i.Titulo} ID: {i.Id}"));
+            var u = int.Parse(Console.ReadLine());
+            var liv = livroControl.GetLista().FirstOrDefault(x => x.Id == u);
+            livroControl.Deleta(liv);
             Console.WriteLine("Livro Removido com sucesso!");
             Console.ReadKey();
         }
@@ -120,7 +138,7 @@ namespace Interface
             Console.WriteLine("Senha");
             var senha = Console.ReadLine();
             Usuario u = new Usuario(nome, senha);
-            usuarioControl.AdicionaUsuario(u);
+            usuarioControl.Inserir(u);
         }
 
         /// <summary>
@@ -134,11 +152,11 @@ namespace Interface
             var login = Console.ReadLine();
             Console.Write("Senha: ");
             var senha = Console.ReadLine();
-            return usuarioControl.GetUsuarios().Find(i => i.Login == login && i.Senha == senha);
+            return usuarioControl.GetLista().FirstOrDefault(i => i.Login == login && i.Senha == senha);
         }
         private static Livro GetLivro(string nome)
         {
-            foreach (var item in livroControl.GetLivros())
+            foreach (var item in livroControl.GetLista())
             {
                 if (item.Titulo.Equals(nome))
                 {
@@ -153,7 +171,9 @@ namespace Interface
             Console.WriteLine("Cadastrar Livro no Sistema");
             Console.WriteLine("Nome do Livro:");
             var nome = Console.ReadLine();
-            livroControl.AdicionaLivro(new Livro(nome));
+            Console.WriteLine("Informe o codigo do livro");
+            var cod = int.Parse(Console.ReadLine());
+            livroControl.Inserir(new Livro(cod, nome));
             Console.WriteLine("Livro Cadastrado!");
             Console.ReadKey();
         }
@@ -165,37 +185,16 @@ namespace Interface
             } while (currently == null);
             MenuSistema();
         }
-        public static void remover()
+        public static void RemoverUsuario()
         {
             Console.WriteLine("Digite o ID do usuario a remover");
-           usuarioControl.GetUsuarios().ForEach(i => Console.WriteLine($"Login: {i.Login} ID: {i.Id}"));
-            var u = Console.ReadLine();
-            //usuarioControl.RemoveUsuario(usuarioControl.GetUsuarios()[int.Parse(u)]);
-           usuarioControl.GetUsuarios()[int.Parse(u)].Ativo = false;
-            //usuarioControl.GetUsuarios().FirstOrDefault(x => x.Id == int.Parse(u)).Ativo = false;
+            usuarioControl.GetLista().ToList().ForEach(i => Console.WriteLine($"Login: {i.Login} ID: {i.Id}"));
+            var u = int.Parse(Console.ReadLine());
+            var usu = usuarioControl.GetLista().FirstOrDefault(x => x.Id == u);
+            usuarioControl.Deleta(usu);
             Console.WriteLine("Usuario removido com sucesso");
             Console.ReadKey();
         }
 
-        public static void testarAgragar()
-        {
-            string[] fruits = { "apple", "mango", "orange", "passionfruit", "grape" };
-
-            // Determine whether any string in the array is longer than "banana".
-            string longestName =
-                fruits.Aggregate("banana",
-                                (longest, next) =>
-                                    next.Length > longest.Length ? next : longest,
-                                // Return the final result as an upper case string.
-                                fruit => fruit.ToUpper());
-
-            Console.WriteLine(
-                "The fruit with the longest name is {0}.",
-                longestName);
-
-            // This code produces the following output:
-            //
-            // The fruit with the longest name is PASSIONFRUIT.
-        }
     }
 }

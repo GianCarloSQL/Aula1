@@ -1,34 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Locacao.Model
 {
-    public class Livro
+    public class Livro : AbstractModel
     {
-        public Livro(string Titulo, bool Disponivel = true)
-        {
-            this.Disponivel = Disponivel;
-            this.Titulo = Titulo;
-        }
-
-        public Livro(int cod, string Titulo, bool Disponivel = true)
+        public Livro(int cod, string Titulo)
         {
             this.CodLivro = cod;
-            this.Disponivel = Disponivel;
             this.Titulo = Titulo;
         }
+        public Livro() { }
 
-
+        [Required]
         public int CodLivro { get; set; }
+
+        [Required]
         public string Titulo { get; set; }
-        public bool Disponivel { get; set; }
+        public bool Disponivel { get; set; } = true;
 
         public override string ToString()
         {
-            return $"Titulo: {Titulo}\nCodigo: {CodLivro}\nDisponibilidade: {Disponivel}";
+            string template = "{0,-5}        {1,-30}        {2,-5}";
+            return string.Format(template, CodLivro, Titulo,Disponivel);
+        }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }

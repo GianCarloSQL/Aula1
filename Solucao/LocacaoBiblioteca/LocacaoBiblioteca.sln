@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locacao", "Locacao\Locacao.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{7B8EF924-574C-4751-8566-A702AB7B46C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{507AB190-9490-4C6F-8149-8E721DCBF29A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7B8EF924-574C-4751-8566-A702AB7B46C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8EF924-574C-4751-8566-A702AB7B46C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B8EF924-574C-4751-8566-A702AB7B46C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{507AB190-9490-4C6F-8149-8E721DCBF29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{507AB190-9490-4C6F-8149-8E721DCBF29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{507AB190-9490-4C6F-8149-8E721DCBF29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{507AB190-9490-4C6F-8149-8E721DCBF29A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

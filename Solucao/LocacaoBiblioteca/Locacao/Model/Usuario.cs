@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Locacao.Model
 {
-  public   class Usuario
+    public class Usuario : AbstractModel
     {
-        public Usuario(int cod,string login, string senha) {
-            Id = cod;
-            Login = login;
-            Senha = senha;
-            livros = new List<Livro>();
-        }
+        public Usuario() { }
 
         public Usuario(string login, string senha)
         {
@@ -21,13 +17,22 @@ namespace Locacao.Model
             Senha = senha;
             livros = new List<Livro>();
         }
-        public int Id { get; set; }
+        [Required]
         public string Login { get; set; }
+        [Required]
         public string Senha { get; set; }
-        public bool Ativo{ get; set; } =true;
-        public int UsuarioCriacao { get; set; }
-        public  DateTime DataCriacao{ get; set; }
-        public DateTime DataAlteracao { get; set; }
+
         public List<Livro> livros { get; set; }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
+        public override string ToString()
+        {
+            string template = "{0,-15}        {1,-15}";
+            return string.Format(template,Login,Senha);
+        }
+
     }
 }

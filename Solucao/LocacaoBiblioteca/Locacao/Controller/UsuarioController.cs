@@ -7,28 +7,42 @@ using Locacao.Model;
 
 namespace Locacao.Controller
 {
-    public class UsuarioController
+    public class UsuarioController : AbstractController<Usuario>
     {
-        //  public List<Usuario> usuarios;
-        LocacaoContext db = new LocacaoContext();
-        public UsuarioController()
+        public override bool Atualiza(Usuario info)
         {
-  
+            if (info == null)
+                return false;
+            info.Update();
+            Save();
+            return true;
         }
-        public List<Usuario> GetUsuarios()
+
+        public override bool Deleta(Usuario info)
         {
-            return db.usuarios.Where(x => x.Ativo).ToList();
+            if (info == null)
+            {
+                return false;
+            }
+            info.Ativo = false;
+            Save();
+            return true;
         }
-        public void AdicionaUsuario(Usuario u)
+
+        public override bool Inserir(Usuario info)
         {
-           
-            u.Id = LocacaoContext.indiceUsuarios;
-            db.usuarios.Add(u);
-            LocacaoContext.indiceUsuarios++;
+
+            if (string.IsNullOrWhiteSpace(info.Login))
+            {
+                return false;
+            }
+            Context.usuarios.Add(info);
+            Save();
+            return true;
         }
-        public void RemoveUsuario(Usuario u)
+        public override IQueryable<Usuario> GetLista()
         {
-           db.usuarios.Remove(u);
+            return Context.usuarios.Where(x => x.Ativo);
         }
     }
 }

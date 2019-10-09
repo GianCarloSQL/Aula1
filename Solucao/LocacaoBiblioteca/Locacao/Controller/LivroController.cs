@@ -7,30 +7,44 @@ using System.Threading.Tasks;
 
 namespace Locacao.Controller
 {
-    public class LivroController
+    public class LivroController : AbstractController<Livro>
     {
-        //public List<Livro> livros;
-         LocacaoContext db = new LocacaoContext();
-
-        public LivroController()
+        public override bool Atualiza(Livro info)
         {
-       
+            if (info == null)
+                return false;
+            info.Update();
+            Save();
+            return true;
         }
 
-        public void AdicionaLivro(Livro livro)
+        public override bool Deleta(Livro info)
         {
-            livro.CodLivro = LocacaoContext.indiceLivros;
-            db.livros.Add(livro);
-            LocacaoContext.indiceLivros++;
-        }
-        public List<Livro> GetLivros()
-        {
-            return db.livros;
+            if (info == null)
+            {
+                return false;
+            }
+            info.Ativo = false;
+            Save();
+            return true;
         }
 
-        public void RemoveLivro(Livro l)
+        public override bool Inserir(Livro info)
         {
-            db.livros.Remove(l);
+
+            if (string.IsNullOrWhiteSpace(info.Titulo))
+            {
+                return false;
+            }
+            Context.livros.Add(info);
+            Save();
+            return true;
         }
+        public override IQueryable<Livro> GetLista()
+        {
+            return Context.livros.Where(x => x.Ativo);
+        }
+
+
     }
 }
