@@ -11,13 +11,15 @@ namespace Interface
 {
     class Program
     {
-        static Task Loading;
+        static Task Loading = new Task(ProgressBar);
+        static bool IsFinished = false;
+        //  static Task<Usuario> Logar = new Task<Usuario>(RealizaLoginSistema);
         static UsuarioController usuarioControl = new UsuarioController();
         static LivroController livroControl = new LivroController();
         static Usuario currently = null;
         static void Main(string[] args)
         {
-            Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 1.1)");
+            Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 2.1)");
             Loga();
             Loading.Dispose();
             MenuSistema();
@@ -28,7 +30,6 @@ namespace Interface
         {
             while (true)
             {
-                Loading = null;
                 Console.Clear();
                 Console.WriteLine("MENU SISTEMA");
                 Console.WriteLine($"Bem vindo {currently.Login} o que deseja fazer?");
@@ -210,13 +211,17 @@ namespace Interface
         /// <returns></returns>
         private static Usuario RealizaLoginSistema()
         {
-            Loading = new Task(ProgressBar);
+            Console.Clear();
+            IsFinished = true;
             Console.WriteLine("Informe suas informações de Acesso");
             Console.Write("Login: ");
             var login = Console.ReadLine();
             Console.Write("Senha: ");
             var senha = Console.ReadLine();
+            IsFinished = false;
+            Loading = new Task(ProgressBar);
             Loading.Start();
+            Console.Clear();
             return usuarioControl.GetLista().FirstOrDefault(i => i.Login == login && i.Senha == senha);
         }
         private static Livro GetLivro(string nome)
@@ -247,22 +252,28 @@ namespace Interface
             do
             {
                 currently = RealizaLoginSistema();
-
             } while (currently == null);
+            IsFinished = true;
             MenuSistema();
         }
         public static void ProgressBar()
         {
             Console.Clear();
-            Console.WriteLine("Wait");
-            for (int i = 0; i < 15; i++)
+            Console.Write("Logando");
+            while (true)
             {
+
+                if (IsFinished)
+                {
+                    IsFinished = false;
+                    break;
+                }
                 var b = "_";
                 Console.Write(b);
                 Thread.Sleep(100);
                 b += "_";
             }
-            Console.Clear();
+
 
         }
 
