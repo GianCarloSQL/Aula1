@@ -26,12 +26,12 @@ namespace Locacao.Model
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            DataAlteracao = DateTime.Now;
         }
         public override string ToString()
         {
-            string template = "{0,-15}        {1,-15}";
-            return string.Format(template,Login,Senha);
+            string template = "{0,-15}        {1,-15}       {2,-15}";
+            return string.Format(template,Id,Login,Senha);
         }
 
     }

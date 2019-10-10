@@ -25,13 +25,13 @@ namespace Locacao.Model
 
         public override string ToString()
         {
-            string template = "{0,-5}        {1,-30}        {2,-5}";
-            return string.Format(template, CodLivro, Titulo,Disponivel);
+            string template = "{0,-5}       {1,-5}        {2,-30}        {3,-5}";
+            return string.Format(template,Id, CodLivro, Titulo,Disponivel);
         }
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            DataAlteracao = DateTime.Now;
         }
     }
 }

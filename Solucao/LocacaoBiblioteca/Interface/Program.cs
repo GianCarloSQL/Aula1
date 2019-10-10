@@ -11,7 +11,7 @@ namespace Interface
 {
     class Program
     {
-        static Task Loading = new Task(ProgressBar);
+        static Task Loading;
         static UsuarioController usuarioControl = new UsuarioController();
         static LivroController livroControl = new LivroController();
         static Usuario currently = null;
@@ -19,6 +19,7 @@ namespace Interface
         {
             Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 1.1)");
             Loga();
+            Loading.Dispose();
             MenuSistema();
             Console.ReadKey();
         }
@@ -27,8 +28,10 @@ namespace Interface
         {
             while (true)
             {
+                Loading = null;
                 Console.Clear();
-                Console.WriteLine("Menu Sistema");
+                Console.WriteLine("MENU SISTEMA");
+                Console.WriteLine($"Bem vindo {currently.Login} o que deseja fazer?");
                 Console.WriteLine("1 - Procurar livro");
                 Console.WriteLine("2 - Ver livros locados");
                 Console.WriteLine("3 - Cadastrar Livro");
@@ -37,6 +40,7 @@ namespace Interface
                 Console.WriteLine("6 - Remover usuario");
                 Console.WriteLine("7 - Remover Livro");
                 Console.WriteLine("8 - Listar");
+                Console.WriteLine("9 - Atualizar");
                 Console.WriteLine("0 - Sair");
                 var Menu = Console.ReadLine();
                 switch (Menu)
@@ -54,8 +58,6 @@ namespace Interface
                             {
                                 if (livro.Disponivel)
                                 {
-
-
                                     livro.Disponivel = false;
                                     currently.livros.Add(livro);
                                 }
@@ -100,23 +102,82 @@ namespace Interface
                         RemoverLivro();
                         break;
                     case "8":
-                        Console.WriteLine("1 - livros | 2 - usuarios");
-                        if (int.Parse(Console.ReadLine()) == 1)
-                        {
-                            Console.WriteLine("ID           Titulo                                Disponivel?");
-                            livroControl.GetLista().ToList().ForEach(l => Console.WriteLine(l.ToString()));
-                        }
-                        else
-                        {
-                            Console.WriteLine("Login                  Senha");
-                            usuarioControl.GetLista().ToList().ForEach(u => Console.WriteLine(u.ToString()));
-                        }
-                        Console.ReadKey();
+                        Listar();
+                        break;
+                    case "9":
+                        Update();
                         break;
                     default:
                         break;
                 }
             }
+        }
+
+        private static void Update()
+        {
+            Console.WriteLine("1 - livros | 2 - usuarios");
+            if (int.Parse(Console.ReadLine()) == 1)
+            {
+                Console.WriteLine("ID           Titulo                                Disponivel?");
+                livroControl.GetLista().ToList().ForEach(l => Console.WriteLine(l.ToString()));
+                Console.WriteLine("Informe o ID do Livro que voce deseja alterar");
+                var o = int.Parse(Console.ReadLine());
+                Livro temp = livroControl.GetLista().FirstOrDefault(l => l.Id == o);
+                if (temp != null)
+                {
+                    Console.WriteLine($"Informe as informações atualizadas do livro {temp.Titulo}");
+                    temp.Titulo = Console.ReadLine();
+                    Console.WriteLine("Informe o codigo");
+                    temp.CodLivro = int.Parse(Console.ReadLine());
+                    livroControl.Atualiza(temp);
+                    Console.WriteLine("livro atualizado!");
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Console.WriteLine("Este livro nao existe");
+                    Console.ReadKey(true);
+                }
+            }
+            else
+            {
+                Console.WriteLine("ID                   Login                  Senha");
+                usuarioControl.GetLista().ToList().ForEach(u => Console.WriteLine(u.ToString()));
+                Console.WriteLine("Informe o ID do Usuario que voce deseja alterar");
+                var o = int.Parse(Console.ReadLine());
+                Usuario temp = usuarioControl.GetLista().FirstOrDefault(l => l.Id == o);
+                if (temp != null)
+                {
+                    Console.WriteLine($"Informe o novo Login do Usuario {temp.Login}");
+                    temp.Login = Console.ReadLine();
+                    Console.WriteLine("Informe a nova senha");
+                    temp.Senha = Console.ReadLine();
+                    usuarioControl.Atualiza(temp);
+                    Console.WriteLine("Usuario atualizado!");
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Console.WriteLine("Este Usuario nao existe");
+                    Console.ReadKey(true);
+                }
+            }
+        }
+
+        private static void Listar()
+        {
+            Console.WriteLine("1 - livros | 2 - usuarios");
+            if (int.Parse(Console.ReadLine()) == 1)
+            {
+                Console.WriteLine("ID           Titulo                                Disponivel?");
+                livroControl.GetLista().ToList().ForEach(l => Console.WriteLine(l.ToString()));
+            }
+            else
+            {
+                Console.WriteLine("Login                  Senha");
+                usuarioControl.GetLista().ToList().ForEach(u => Console.WriteLine(u.ToString()));
+            }
+            Console.ReadKey();
         }
 
         private static void RemoverLivro()
@@ -149,6 +210,7 @@ namespace Interface
         /// <returns></returns>
         private static Usuario RealizaLoginSistema()
         {
+            Loading = new Task(ProgressBar);
             Console.WriteLine("Informe suas informações de Acesso");
             Console.Write("Login: ");
             var login = Console.ReadLine();
@@ -193,7 +255,7 @@ namespace Interface
         {
             Console.Clear();
             Console.WriteLine("Wait");
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < 15; i++)
             {
                 var b = "_";
                 Console.Write(b);
