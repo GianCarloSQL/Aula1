@@ -19,7 +19,7 @@ namespace Interface
         static Usuario currently = null;
         static void Main(string[] args)
         {
-            Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 2.1)");
+            Console.WriteLine("SISTEMA DE LOCAÇÃO DE LIVROS (Beta 2.2)");
             Loga();
             Loading.Dispose();
             MenuSistema();
