@@ -9,10 +9,15 @@ namespace BicicletaLibrary.Controller
 {
     public class BicicletaController : AbstractController<Bicicleta>
     {
-          Context Context = new Context();
+        //override Context
+       new Context Context = new Context();
         public override bool Atualiza(Bicicleta info)
         {
-            throw new NotImplementedException();
+            if (info == null)
+                return false;
+            info.Update();
+            Save();
+            return true;
         }
 
         public override bool Deleta(Bicicleta info)
