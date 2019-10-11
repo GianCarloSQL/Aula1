@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace View
         private void Button1_Click(object sender, EventArgs e)
         {
 
-            Control.Inserir(new Bicicleta(textBox1.Text));
+            //  Control.Inserir(new Bicicleta(textBox1.Text));
             MessageBox.Show("Bicicleta Cadastrada!");
 
         }
@@ -44,9 +45,14 @@ namespace View
 
         private void Button2_Click(object sender, EventArgs e)
         {
-
-            Control.GetLista().ToList().ForEach(x => listBox1.Items.Add($"{x.Id}   |   {x.Modelo}\n"));
-            Carrega();
+            this.Invoke(new MethodInvoker(Carrega));
+            Control.GetLista().ToList().ForEach(x => listBox1.Items.Add($"{x.Id}   | \n"));
+            IsFinished = true;
+/*
+            string q = from s in db.Services
+            join sa in db.ServiceAssignments on s.Id equals sa.ServiceId
+            where sa.LocationId == 1
+            select s;*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -56,14 +62,21 @@ namespace View
 
         private void ProgressBar1_Click(object sender, EventArgs e)
         {
-            
+
         }
-        public  void Carrega() {
+        public void Carrega()
+        {
             for (int i = 0; i < 100; i++)
             {
                 progressBar1.Value = i;
-                Thread.Sleep(30);
+                Thread.Sleep(50);
+                if (IsFinished)
+                {
+                    progressBar1.Value = 100;
+                    break;
+                }
             }
         }
+        static bool IsFinished = false;
     }
 }

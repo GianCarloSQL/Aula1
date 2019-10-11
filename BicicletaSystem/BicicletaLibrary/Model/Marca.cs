@@ -7,18 +7,10 @@ using System.Threading.Tasks;
 using Locacao.Model;
 namespace BicicletaLibrary.Model
 {
-
-    public class Bicicleta : AbstractModel
+    public class Marca : AbstractModel
     {
-        public Bicicleta() { }
-
-        public Bicicleta(Modelo model)
-        {
-            Modelo = model;
-        }
-
         [Required]
-        public Modelo Modelo { get; set; }
+        public string Nome { get; set; }
         public override void Update()
         {
             DataAlteracao = DateTime.Now;
