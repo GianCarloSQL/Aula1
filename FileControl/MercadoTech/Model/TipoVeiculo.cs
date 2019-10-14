@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MercadoTech.Model
 {
-    public enum TipoVeiculo
+    public class TipoVeiculo
     {
-        Automóvel, Bicicleta, Moto, Patinete
+        public int Codigo { get; set; }
+        public int Nome { get; set; }
     }
 }

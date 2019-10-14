@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MercadoTech.Model
 {
-    public enum Status
+    public class Status
     {
-        Vigente, Em_Aprovação, Fila_de_Espera
+        public int Codigo { get; set; }
+        public string Nome { get; set; }
     }
 }
