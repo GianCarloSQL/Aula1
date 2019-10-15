@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MercadoTech.Model.Colaborador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Is_PCD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForneceCarona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResideBlumenau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trabalho_Noturno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Nascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioAlteracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAlteracao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Is_PCD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForneceCarona)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResideBlumenau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trabalho_Noturno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Nascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioAlteracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAlteracao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FileControl;
+using MercadoTech.Controller;
+using MercadoTech.Model;
 
 namespace ViewTest
 {
@@ -13,7 +15,15 @@ namespace ViewTest
         {
             ReaderImpl reader = new ReaderImpl();
             //reader.ExecellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_MotoFix.xlsx");
-            reader.ExcellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_AutomovelFix.xlsx");
+            //    reader.ExcellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_AutomovelFix.xlsx");
+            CorController controller = new CorController();
+            controller.PutCor(0, new Cor()
+            {
+                Nome = "Azul",
+                Codigo = 0
+                
+            });
+            Console.WriteLine(controller.GetCor(1).Nome);
             Console.ReadKey();
         }
     }
