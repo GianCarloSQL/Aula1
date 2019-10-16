@@ -5,12 +5,14 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using MercadoTech.Controller;
+using MercadoTech.Model;
 namespace FileControl
 {
     public class ReaderImpl : AbsctractReader
     {
+        Controller controller = new Controller();
+        
         public static string path = @"C:\src\RedirectApplication\RedirectApplication\301s.xlsx";
         public override void ExcellReader(string Arquivo)
         {
@@ -26,10 +28,17 @@ namespace FileControl
             foreach (DataRow item in dt.Rows)
             {
                 {
-                    Console.Write(item[0] + "       |       " + item[1]);
+                   controller.Context.Modelo.Add(new Modelo()
+                    {
+                        Codigo = 16 + int.Parse(item[0].ToString()),
+                        Nome = item[1].ToString()
+                    }) ;
+                //    Console.Write(item[0].ToString() + "       |       " + item[1].ToString());
                 }
-                Console.WriteLine("");
+
             }
+            Console.WriteLine("Feito!");
+            controller.Context.SaveChanges();
         }
 
         public override void Get()

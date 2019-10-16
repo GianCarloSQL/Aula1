@@ -15,16 +15,9 @@ namespace View
         static void Main(string[] args)
         {
             ReaderImpl reader = new ReaderImpl();
-            //reader.ExecellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_MotoFix.xlsx");
-            //    reader.ExcellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_AutomovelFix.xlsx");
-            CorController controller = new CorController();
-            /*  controller.PutCor(new Cor()
-              {
-                  Nome = "Azul",
-                  Codigo = 2
+                   reader.ExcellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_MotoFix.xlsx");
+             //  reader.ExcellReader("C:\\Users\\900092\\Desktop\\Marcas_Modelo_AutomovelFix.xlsx");
 
-              });*/
-           // Console.WriteLine(controller.GetCor().ToList().First(x => x.Ativo).Nome);
             Console.ReadKey();
         }
     }

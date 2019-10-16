@@ -19,6 +19,8 @@ namespace MercadoTech.Model
         public DbSet<Marca> Marca { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<TipoVeiculo> Tipo_Veiculo { get; set; }
+        public DbSet<Modelo> Modelo { get; set; }
+
         // Your context has been configured to use a 'Context' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
         // 'MercadoTech.Model.Context' database on your LocalDb instance. 
