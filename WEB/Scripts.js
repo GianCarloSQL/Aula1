@@ -11,5 +11,8 @@ function atualizaData() {
 
 function converte() {
     var n = document.getElementById("numeroC").value;
-    alert("Resultado em Dolar: " + n / 4);
+    var d = document.getElementById("numeroR");
+    d.value = "R$ " + n / 4.16;
+
+//   alert("Obrigado por acessar nosso site");
 }
