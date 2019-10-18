@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataFrame\DataFrame.csproj">
+      <Project>{fe1bc9fd-b88f-40e8-9eee-73ae57491099}</Project>
+      <Name>DataFrame</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

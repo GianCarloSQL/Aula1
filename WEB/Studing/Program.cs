@@ -8,8 +8,9 @@ namespace Studing
     {
         static void Main(string[] args)
         {
-            MapToDataBase<Pessoa> mapa = new MapToDataBase<Pessoa>();
-            mapa.CreateTable();
+            Map<Pessoa> mapa = new Map<Pessoa>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            mapa.Testar();
+            Console.WriteLine("Succefull");
             Console.ReadKey(true);
         }
 

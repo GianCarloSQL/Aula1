@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using DataFrame;
+
 
 namespace WindowsFormsApp1
 {
@@ -17,8 +17,8 @@ namespace WindowsFormsApp1
         bool first = true;
         public Form1()
         {
-            MapToDataBase<P> mapa = new MapToDataBase<P>();
-            mapa.CreateTables();
+        //    MapToDataBase<P> mapa = new MapToDataBase<P>();
+            //mapa.CreateTables();
             InitializeComponent();
 
         }
