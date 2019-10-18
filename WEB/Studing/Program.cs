@@ -8,9 +8,9 @@ namespace Studing
     {
         static void Main(string[] args)
         {
-            Map<Pessoa> mapa = new Map<Pessoa>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            mapa.Testar();
-            Console.WriteLine("Succefull");
+            Map<Pessoa> mapa = new Map<Pessoa>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+                                                "MeuBanco");
+            mapa.CreateTable();
             Console.ReadKey(true);
         }
 
@@ -22,7 +22,8 @@ namespace Studing
 
 
 
-        public static void mainn() {
+        public static void mainn()
+        {
             List<int> n = new List<int>() { 0, 1, 2, 3, 4, 5, 6 };
             Pessoa p = n[5];
             Pessoa p2 = new Pessoa() { A = 5 };
@@ -40,6 +41,8 @@ namespace Studing
         {
             public int A { get; set; }
             public string Nome { get; set; }
+            public int Idade { get; set; }
+            public string cpf { get; set; }
 
             public static implicit operator Pessoa(int v)
             {
