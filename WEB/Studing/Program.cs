@@ -8,9 +8,11 @@ namespace Studing
     {
         static void Main(string[] args)
         {
-            Map<Pessoa> mapa = new Map<Pessoa>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
-                                                "MeuBanco");
-            mapa.CreateTable();
+          /*  Map mapa = new Map("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+                                                "MeuBanco");*/
+
+            //MyTables.AddTable();
+            //mapa.CreateTable();
             Console.ReadKey(true);
         }
 
