@@ -4,17 +4,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB9EB356-8A80-42B7-84B2-454B29BAA938}"
+	ProjectSection(SolutionItems) = preProject
+		ScriptWebApi.js = ScriptWebApi.js
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrimeiroWebSite", "PrimeiroWebSite", "{03DFA3DA-0CF1-4949-AE5A-0C20881B5181}"
 	ProjectSection(SolutionItems) = preProject
+		CepsHTML.html = CepsHTML.html
 		Converter.html = Converter.html
 		..\..\..\..\..\Desktop\Site\fundo2.mp4 = ..\..\..\..\..\Desktop\Site\fundo2.mp4
 		index.html = index.html
+		WebApi.html = WebApi.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Js", "Js", "{287F8063-8FC8-48B7-8385-1DFE0755A538}"
 	ProjectSection(SolutionItems) = preProject
 		Scripts.js = Scripts.js
+		ScriptWebApi.js = ScriptWebApi.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Css", "Css", "{D4070786-F52D-453C-8A87-9612986EAF41}"
