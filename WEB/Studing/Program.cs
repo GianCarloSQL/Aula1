@@ -9,16 +9,15 @@ namespace Studing
     {
         static void Main(string[] args)
         {
-            /* Map<Pessoa> mapa = new Map<Pessoa>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+            Map<ContextDB> mapa = new Map<ContextDB>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
                                                  "MeuBanco");
-             mapa.CreateTable();
 
-     */
+            Console.WriteLine(mapa.CmdCreateTable());
 
-            yieldStatement.Execute();
+
             Console.ReadKey(true);
 
-   
+
         }
 
 
@@ -50,6 +49,8 @@ namespace Studing
             public string Nome { get; set; }
             public int Idade { get; set; }
             public string cpf { get; set; }
+            public List<Pessoa> enderecos { get; set; }
+            public List<Pessoa> colecao { get; set; }
 
             public static implicit operator Pessoa(int v)
             {

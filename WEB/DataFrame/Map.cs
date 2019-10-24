@@ -8,10 +8,10 @@ using System.Reflection;
 
 namespace DataFrame
 {
-    public class Map
+    public class Map<T> where T : new()
     {
         static string connectionString;
-        static Context<MapTables> Context = new Context<MapTables>();
+
         public static string NomeDB { get; set; }
         public Map(string Connection, string nomedb)
         {
@@ -22,11 +22,7 @@ namespace DataFrame
         public void CreateTables()
         {
             CreateDataBase();
-            foreach (var item in Context.ListOfTables)
-            {
-                CreateCommand(CmdCreateTable(item), false);
-            }
-            
+            CreateCommand(CmdCreateTable(), false);
         }
 
         private static bool CreateCommand(string queryString, bool IsDB)
@@ -58,27 +54,41 @@ namespace DataFrame
             }
         }
 
-        public string CmdCreateTable(object item)
+        public string CmdCreateTable()
         {
             string properties = "";
-
-            foreach (PropertyInfo prop in typeof(object).GetProperties(BindingFlags.Public | BindingFlags.Instance))
-            {
-                if (prop.PropertyType == typeof(string))
-                {
-                    properties += $"{prop.Name.ToUpper()} nvarchar(100),";
-                }
-                else if (prop.PropertyType == typeof(int))
-                {
-                    properties += $"{prop.Name.ToUpper()} int,";
-                }
-
-            }
+            var m = GetTables();
+            m.ForEach(x => Console.WriteLine(x));
+            /* foreach (PropertyInfo prop in typeof(object).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+             {
+                  if (prop.PropertyType == typeof(string))
+                  {
+                      properties += $"{prop.Name.ToUpper()} nvarchar(100),";
+                  }
+                  else if (prop.PropertyType == typeof(int))
+                  {
+                      properties += $"{prop.Name.ToUpper()} int,";
+                  }
+             }*/
 
             string aux = $"use {NomeDB} ; Create table {typeof(object).Name} (" +
                          $"Id int identity (1,1), {properties} PRIMARY KEY (Id) " +
                          $");";
             return aux;
         }
+        public List<object> GetTables()
+        {
+             /*var objectType = new T().GetType();
+             var obj = Activator.CreateInstance(objectType);*/
+
+            var Tables = new List<object>();
+
+            foreach (PropertyInfo prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                Tables.Add(prop);
+            }
+            return Tables;
+        }
     }
+
 }

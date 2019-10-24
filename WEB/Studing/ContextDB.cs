@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using DataFrame;
 namespace Studing
 {
-    public class ContextDB 
+    public class ContextDB : IMapTables
     {
-        public List<Modelo> modelos { get; set; }
-        public List<Marca> marcas { get; set; }
+        public ContextDB() {
+        }
+
+        public List<Modelo> modelos = new List<Modelo>();
+        public List<Marca> marcas = new List<Marca>();
         
     }
 }
