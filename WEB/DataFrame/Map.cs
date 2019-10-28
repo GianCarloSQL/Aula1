@@ -32,7 +32,7 @@ namespace DataFrame
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
                 command.Connection.Open();
-                int r = -1;
+                int r = -1; 
                 if (IsDB)
                 {
                     r = (int)command.ExecuteScalar();
