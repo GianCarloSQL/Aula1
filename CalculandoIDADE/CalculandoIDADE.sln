@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculandoIDADE", "Calculan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Performance Counters", "Performance Counters\Performance Counters.csproj", "{665B9C48-189F-47C7-8D16-DFA499B3013C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Correios", "Correios\Correios.csproj", "{5621E7A7-8B89-4A5A-AAD3-5A7901F4ABCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoExistente", "BancoExistente\BancoExistente.csproj", "{6723DD14-397A-444A-B4B0-AA1973AD5F17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{665B9C48-189F-47C7-8D16-DFA499B3013C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{665B9C48-189F-47C7-8D16-DFA499B3013C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{665B9C48-189F-47C7-8D16-DFA499B3013C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5621E7A7-8B89-4A5A-AAD3-5A7901F4ABCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5621E7A7-8B89-4A5A-AAD3-5A7901F4ABCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5621E7A7-8B89-4A5A-AAD3-5A7901F4ABCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5621E7A7-8B89-4A5A-AAD3-5A7901F4ABCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6723DD14-397A-444A-B4B0-AA1973AD5F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6723DD14-397A-444A-B4B0-AA1973AD5F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6723DD14-397A-444A-B4B0-AA1973AD5F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6723DD14-397A-444A-B4B0-AA1973AD5F17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

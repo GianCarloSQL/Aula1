@@ -18,12 +18,13 @@ namespace CalculandoIDADE.Controllers
         {
             return Context.Pessoas;
         }
-
+         
         public Pessoa Post(Pessoa data)
         {
             Context.Pessoas.Add(data);
             Context.SaveChanges();
             return data;
         }
+
     }
 }
